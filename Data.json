@@ -4,25 +4,36 @@
       "id": "e1",
       "name": "Anna",
       "contractHoursPerWeek": 24,
-      "skills": ["care", "medication"]
+      "skills": [
+        "care",
+        "medication"
+      ]
     },
     {
       "id": "e2",
       "name": "Bram",
       "contractHoursPerWeek": 32,
-      "skills": ["care"]
+      "skills": [
+        "care"
+      ]
     },
     {
       "id": "e3",
       "name": "Daan",
       "contractHoursPerWeek": 8,
-      "skills": ["care", "medication"]
+      "skills": [
+        "care",
+        "medication"
+      ]
     },
     {
       "id": "e4",
       "name": "Fleur",
       "contractHoursPerWeek": 36,
-      "skills": ["care", "night"]
+      "skills": [
+        "care",
+        "night"
+      ]
     }
   ],
   "shifts": [
@@ -38,7 +49,7 @@
       "start": "2026-11-02T14:00:00+01:00",
       "end": "2026-11-02T22:00:00+01:00",
       "requiredSkill": "medication",
-      "assignedEmployeeId": null
+      "assignedEmployeeId": "e3"
     },
     {
       "id": "s3",
