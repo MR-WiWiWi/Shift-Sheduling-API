@@ -1,0 +1,72 @@
+{
+  "employees": [
+    {
+      "id": "e1",
+      "name": "Anna",
+      "contractHoursPerWeek": 24,
+      "skills": ["care", "medication"]
+    },
+    {
+      "id": "e2",
+      "name": "Bram",
+      "contractHoursPerWeek": 32,
+      "skills": ["care"]
+    },
+    {
+      "id": "e3",
+      "name": "Daan",
+      "contractHoursPerWeek": 8,
+      "skills": ["care", "medication"]
+    },
+    {
+      "id": "e4",
+      "name": "Fleur",
+      "contractHoursPerWeek": 36,
+      "skills": ["care", "night"]
+    }
+  ],
+  "shifts": [
+    {
+      "id": "s1",
+      "start": "2026-11-02T07:00:00+01:00",
+      "end": "2026-11-02T15:00:00+01:00",
+      "requiredSkill": "care",
+      "assignedEmployeeId": "e1"
+    },
+    {
+      "id": "s2",
+      "start": "2026-11-02T14:00:00+01:00",
+      "end": "2026-11-02T22:00:00+01:00",
+      "requiredSkill": "medication",
+      "assignedEmployeeId": null
+    },
+    {
+      "id": "s3",
+      "start": "2026-11-02T23:00:00+01:00",
+      "end": "2026-11-03T07:00:00+01:00",
+      "requiredSkill": "night",
+      "assignedEmployeeId": "e4"
+    },
+    {
+      "id": "s4",
+      "start": "2026-11-03T07:00:00+01:00",
+      "end": "2026-11-03T15:00:00+01:00",
+      "requiredSkill": "care",
+      "assignedEmployeeId": "e3"
+    },
+    {
+      "id": "s5",
+      "start": "2026-11-03T15:00:00+01:00",
+      "end": "2026-11-03T23:00:00+01:00",
+      "requiredSkill": "care",
+      "assignedEmployeeId": null
+    },
+    {
+      "id": "s6",
+      "start": "2026-11-04T07:00:00+01:00",
+      "end": "2026-11-04T15:00:00+01:00",
+      "requiredSkill": "medication",
+      "assignedEmployeeId": null
+    }
+  ]
+}
