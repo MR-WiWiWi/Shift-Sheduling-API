@@ -13,6 +13,47 @@ def save_data(data):
     with open('data.json', 'w') as file:
         json.dump(data, file, indent=2)
 
+@app.route('/shifts/<shift_id>/eligible-employees', methods=['GET'])
+def get_eligible_employees(shift_id):
+    data = load_data()
+
+    # 1. Zoek op shift
+    shift = next((s for s in data['shifts'] if s['id'] == shift_id), None)
+    if not shift:
+        return jsonify({"error": "Shift niet gevonden"}), 404
+
+    eligible_employees = []
+    required_skill = shift.get('requiredSkill')
+    new_start = shift['start']
+    new_end = shift['end']
+
+    # 2. Controleer elke medewerker in de lijst
+    for emp in data['employees']:
+        # CHECK 1: heeft de medewerker de skill?
+        if required_skill and required_skill not in emp.get('skills', []):
+            continue  # Sla deze medewerker over
+
+        # CHECK 2: Heeft de medewerker tijdsoverlap?
+        has_overlap = False
+        for s in data['shifts']:
+            if s.get('assignedEmployeeId') == emp['id']:
+                if s['start'] < new_end and s['end'] > new_start:
+                    has_overlap = True
+                    break
+
+        if has_overlap:
+            continue  # Sla deze medewerker over
+
+        # Als alle checks goed zijn, is de medewerker geschikt!
+        eligible_employees.append({
+            "id": emp['id'],
+            "name": emp['name'],
+            "skills": emp['skills']
+        })
+
+    # 3. Geef de lijst van geschikte medewerkers terug
+    return jsonify({"eligible_employees": eligible_employees}), 200
+
 @app.route('/shifts/<shift_id>/assign', methods=['POST'])
 def assign_shift_api(shift_id):
     # 1. Lees het berichtje (JSON) dat binnenkomt
